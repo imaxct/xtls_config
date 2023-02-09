@@ -4,7 +4,7 @@ function validate_file_signature() {
   FILE=$1
   SIG_FILE=$2
   ALS=( -md5 -sha1 -sha256 -sha512 )
-  for algorithm in $ALS; do
+  for algorithm in $ALS[@]; do
     digest=$(openssl dgst $algorithm $FILE | sed 's/([^)]*)//g')
     grep -Fq "$digest" $SIG_FILE || echo "Failed to validate the signature of $FILE, exit." && exit 1
   done
