@@ -1,7 +1,6 @@
 #!/bin/sh
 
-function validate_file_signature()
-{
+function validate_file_signature() {
   FILE=$1
   SIG_FILE=$2
   ALS=( -md5 -sha1 -sha256 -sha512 )

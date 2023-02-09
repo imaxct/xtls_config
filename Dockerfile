@@ -9,7 +9,7 @@ RUN set -ex \
   && chmod +x /root/install.sh \
   && chmod +x /root/config_xtls.sh \
   && /root/install.sh \
-  && config_xtls.sh
+  && /root/config_xtls.sh
 
 ENV TZ=Asia/Shanghai
 CMD [ "/root/xray", "-config", "/root/config.json" ]
