@@ -5,13 +5,13 @@ function validate_file_signature() {
   SIG_FILE=$2
   for algorithm in -md5 -sha1 -sha256 -sha512; do
     digest=$(openssl dgst $algorithm $FILE | sed 's/([^)]*)//g')
-    grep -Fq "$digest" $SIG_FILE || echo "Failed to validate the signature of $FILE, exit." && exit 1
+    grep -Fq "$digest" $SIG_FILE || $(echo "Failed to validate the signature of $FILE, exit." && exit 1)
   done
 }
 
 PLATFORM=$1
 if [ -z "$PLATFORM" ]; then
-    ARCH="amd64"
+    ARCH="64"
 else
     case "$PLATFORM" in
         linux/386)
