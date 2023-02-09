@@ -1,15 +1,14 @@
 FROM alpine:latest
 WORKDIR /root
 COPY install.sh /root/install.sh
-COPY config_xtls.sh /root/config_xtls.sh
+COPY run.sh /root/run.sh
 
 RUN set -ex \
   && apk add --no-cache curl unzip openssl tzdata ca-certificates \
   && mkdir -p /var/log/xray /usr/share/xray \
   && chmod +x /root/install.sh \
-  && chmod +x /root/config_xtls.sh \
-  && /root/install.sh \
-  && /root/config_xtls.sh
+  && chmod +x /root/run.sh \
+  && /root/install.sh
 
 ENV TZ=Asia/Shanghai
-CMD [ "/root/xray", "-config", "/root/config.json" ]
+CMD [ "/root/run.sh" ]

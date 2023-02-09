@@ -3,7 +3,7 @@
 [ -z "$AZ_DOMAIN" ] && echo "Azure dns record name not set, exit" && exit 1
 [ -z "$AZ_REGION" ] && echo "Azure region name not set, exit" && exit 1
 
-$DOMAIN_NAME="$AZ_DOMAIN.$AZ_REGION.xxx.io"
+$DOMAIN_NAME="$AZ_DOMAIN.$AZ_REGION.azurecontainer.io"
 
 mkdir -p /etc/xray/
 
@@ -130,3 +130,6 @@ EOF
 sed -i "s/%%password%%/$CLIENT_PASSWORD/g" /root/config.json
 
 echo "Client password is: $CLIENT_PASSWORD, please keep it."
+
+cd /root
+/root/xray -config /root/config.json

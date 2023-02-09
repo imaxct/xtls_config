@@ -62,7 +62,6 @@ fi
 validate_file_signature $ZIP_FILE $DGST_FILE
 
 unzip -q $ZIP_FILE -d /root
-
 chmod +x /root/xray
 
 # Clean up
