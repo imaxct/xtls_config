@@ -15,7 +15,7 @@ chmod 644 /etc/xray/cert.cer
 chmod 644 /etc/xray/cert.key
 
 # set client password via environment variable or generate one.
-DEFAULT_PASSWORD=$(echo $(xray uuid) | base64)
+DEFAULT_PASSWORD=$(cat /proc/sys/kernel/random/uuid | base64)
 CLIENT_PASSWORD=${PASSWORD:-$DEFAULT_PASSWORD}
 
 cat >/root/config.json <<EOF
