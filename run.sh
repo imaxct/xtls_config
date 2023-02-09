@@ -3,7 +3,7 @@
 [ -z "$AZ_DOMAIN" ] && echo "Azure dns record name not set, exit" && exit 1
 [ -z "$AZ_REGION" ] && echo "Azure region name not set, exit" && exit 1
 
-$DOMAIN_NAME="$AZ_DOMAIN.$AZ_REGION.azurecontainer.io"
+DOMAIN_NAME="$AZ_DOMAIN.$AZ_REGION.azurecontainer.io"
 
 mkdir -p /etc/xray/
 
